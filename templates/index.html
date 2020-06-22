@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<style type="text/css">
+
+    .navbar{background-color:rgba(0,0,0,.2)}.page-footer,.top-nav-collapse{background-color:#1C2331}@media only screen and (max-width:768px){.navbar{background-color:#1C2331}}
+    body, html {
+  		height: 100%;
+       }
+
+		.bg {
+  /* The image used */
+background-image:url("{{ url_for('static',filename='r.png')}}");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.searchBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:  translate(-50%,50%);
+    background: #2f3640;
+    height: 50px;
+    border-radius: 40px;
+    padding: 10px;
+
+}
+
+.searchButton {
+    color: white;
+    float: right;
+    width: 35px;
+    height: 28px;
+    border-radius: 50%;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+}
+
+.searchInput {
+    border:none;
+    background: none;
+    outline:none;
+    color:transparent;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+}
+
+
+	</style>
+
+</head>
+<body>
+
+<div class="container-fluid bg">
+
+<div class="searchBox">
+	<form action="/s_script" method="POST">
+            <input  class="" type="text" name="name" placeholder="Search">
+            <button class="searchButton" >
+                <i class="material-icons">
+                    search
+                </i>
+
+            </button>
+            </form>
+        </div>
+
+
+</div>
+</body>
+</html>
