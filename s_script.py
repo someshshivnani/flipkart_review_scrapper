@@ -1,11 +1,17 @@
+import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 def run_script(text):
-    options=webdriver.ChromeOptions()
-    driver=webdriver.Chrome('chromedriver',chrome_options=options)
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--no-sandbox")
+
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
     wait = WebDriverWait(driver, 40)
     driver.get(f'https://www.flipkart.com/search?q={text}')
     button = driver.find_element_by_class_name('_3wU53n')
