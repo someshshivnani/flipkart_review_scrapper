@@ -12,10 +12,11 @@ def run_script(text):
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-    wait = WebDriverWait(driver, 40)
+    wait = WebDriverWait(driver, 5)
     driver.get(f'https://www.flipkart.com/search?q={text}')
-    b_arg = '_3wU53n'
+
     try:
+        b_arg = '_3wU53n'
         button = driver.find_element_by_class_name(b_arg)
     except:
         b_arg = '_2cLu-l'
@@ -36,8 +37,9 @@ def run_script(text):
 
     # print(driver.current_url)
 
-    vote_ul = '_148m3I'
+
     try:
+        vote_ul = '_148m3I'
         vote_review = wait.until(EC.presence_of_element_located((By.CLASS_NAME, vote_ul)))
     except:
         vote_ul = '_2M5FGu'
