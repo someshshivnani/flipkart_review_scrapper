@@ -28,44 +28,33 @@ def run_script(text):
     x_arg = 'hGSR34'
     rating = wait.until(EC.presence_of_element_located((By.CLASS_NAME, x_arg)))
 
-    rating=rating.text
+    rating = rating.text
 
     total_usr = '_38sUEc'
     total = wait.until(EC.presence_of_element_located((By.CLASS_NAME, total_usr)))
-    total_r=total.text
+    total_r = total.text
 
     # print(driver.current_url)
 
-    if b_arg == '_3wU53n':
-        vote_ul = '_148m3I'
-    else:
+    vote_ul = '_148m3I'
+    try:
+        vote_review = wait.until(EC.presence_of_element_located((By.CLASS_NAME, vote_ul)))
+    except:
         vote_ul = '_2M5FGu'
-    vote_review = wait.until(EC.presence_of_element_located((By.CLASS_NAME, vote_ul)))
-
-    if b_arg == '_3wU53n':
-        star_ul = '_2M5FGu'
-    else:
-        star_ul = '_2ZGksR'
-    star_review = wait.until(EC.presence_of_element_located((By.CLASS_NAME, star_ul)))
+        vote_review = wait.until(EC.presence_of_element_located((By.CLASS_NAME, vote_ul)))
 
     image_arg = '/html/body/div[1]/div/div[3]/div[2]/div[1]/div[1]/div[1]/div/div[1]/div[2]/div[1]/div[2]/img'
 
     image = wait.until(EC.presence_of_element_located((By.XPATH, image_arg)))
 
-    star_list = str(star_review.text)
     vote_list = str(vote_review.text)
 
-    star_list = star_list.replace("★", " ")
     vote_list = vote_list.replace(",", "")
 
-    star_list = star_list.split("\n")
     vote_list = vote_list.split("\n")
 
     def myfunc(a):
         return int(a)
-
-    star = map(myfunc, star_list)
-    star = list(star)
 
     votes = map(myfunc, vote_list)
     votes = list(votes)
@@ -76,10 +65,10 @@ def run_script(text):
     negative_votes = votes[3] + votes[4]
     neutral_votes = votes[2]
 
-    image_src=image.get_attribute('src')
+    image_src = image.get_attribute('src')
     total_votes = 0
     for i in range(len(votes)):
         total_votes = votes[i] + total_votes
-    name = [total_votes, neutral_votes, positive_votes, negative_votes, rating, total_r,image_src]
+    name = [total_votes, neutral_votes, positive_votes, negative_votes, rating, total_r, image_src]
     driver.quit()
     return name
