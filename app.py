@@ -11,8 +11,8 @@ def index():
 
 @app.route("/s_script", methods=['GET', 'POST'])
 def result():
-    name = request.form.get('name')
-    name = run_script(name)
+    fname = request.form.get('name')
+    name = run_script(fname)
     return render_template('result.html', name=name)
 
 
