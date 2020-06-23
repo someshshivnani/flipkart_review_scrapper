@@ -11,19 +11,20 @@
 </head>
 <body>
 <div class="container-fluid">
-  <h1></h1>
-  <p>Resize the browser window to see the effect.</p>
+ <div class="row  col-12 text-center">
+   <h3 class="m-1">  HERE'S WHAT FLIPKART SAYS ABOUT THIS PRODUCT </h3>
+ </div>
 
 
 <div class="row">
-    <div class="col-lg-6 col-sm-3" style="background-image:url('{{url_for('static',filename='right.jpg')}}'); height: 500px; background-position: center;background-repeat: no-repeat;background-size: cover; ">
+    <div class="col-lg-6 col-sm-3" style="background-image:url('{{name[6]}}'); height: 400px; background-position: center;background-repeat: no-repeat;background-size: cover; ">
 </div>
     
 
     <div class="col-md-5 col-sm-3" >
 
 <div class="panel-group " >
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
       <div class="panel-heading">AVERAGE RATING</div>
       <div class="panel-body">{{name[4]}}</div>
     </div>
@@ -33,12 +34,12 @@
       <div class="panel-body">{{name[5]}}</div>
     </div>
 
-    <div class="panel panel-success">
+    <div class="panel panel-info">
       <div class="panel-heading">TOTAL VOTES</div>
       <div class="panel-body">{{name[0]}}</div>
     </div>
 
-    <div class="panel panel-info">
+    <div class="panel panel-danger">
       <div class="panel-heading">NEGATIVE REVIEWS</div>
       <div class="panel-body">{{name[3]}}</div>
     </div>
@@ -48,7 +49,7 @@
       <div class="panel-body">{{name[1]}}</div>
     </div>
 
-    <div class="panel panel-warning">
+    <div class="panel panel-success">
       <div class="panel-heading">POSITIVE REVIEWS</div>
       <div class="panel-body">{{name[2]}}</div>
     </div>
