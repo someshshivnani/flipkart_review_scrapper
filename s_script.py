@@ -57,7 +57,7 @@ def run_script(text):
 
     price = '_1uv9Cb'
     price_x = wait.until(EC.presence_of_element_located((By.CLASS_NAME, price)))
-
+    price_x=price_x.text
     def myfunc(a):
         return int(a)
 
