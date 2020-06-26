@@ -4,67 +4,128 @@
 	<title>result</title>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .responsive {
+            width: 100%;
+            height: auto;
+}
+    </style>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	
+	<script type="text/javascript" src="https://cdnjs.com/libraries/Chart.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+
 </head>
 <body>
 <div class="container-fluid">
- <div class="row  col-12 text-center">
-   <h3 class="m-1">  HERE'S WHAT FLIPKART SAYS ABOUT THIS PRODUCT </h3>
- </div>
-
+  <div class="row text-center">
+    <h2 class="bg-info text-muted">HERE'S WHAT FLIPKART SAYS ABOUT THIS PRODUCT</h2>
+  </div>
 
 <div class="row">
-    <div class="col-lg-6 col-sm-3" style="background-image:url('{{name[6]}}'); height: 400px; background-position: center;background-repeat: no-repeat;background-size: cover; ">
-</div>
-    
+    <div class="col-lg-6 col-sm-3" >
+    <img src="{{name[6]}}" class="responsive">
+
+    </div>
 
     <div class="col-md-5 col-sm-3" >
 
-<div class="panel-group " >
-    <div class="panel panel-primary">
+  <div class="panel-group " >
+      <div class="panel panel-primary">
       <div class="panel-heading">AVERAGE RATING</div>
       <div class="panel-body">{{name[4]}}</div>
     </div>
 
-    <div class="panel panel-primary">
+      <div class="panel panel-primary">
       <div class="panel-heading">TOTAL RATING AND REVIEWS</div>
       <div class="panel-body">{{name[5]}}</div>
     </div>
 
-    <div class="panel panel-info">
+      <div class="panel panel-info">
+      <div class="panel-heading">PRICE</div>
+      <div class="panel-body">{{name[7]}}</div>
+    </div>
+
+
+
+
+      <div class="panel panel-default">
       <div class="panel-heading">TOTAL VOTES</div>
       <div class="panel-body">{{name[0]}}</div>
     </div>
 
-    <div class="panel panel-danger">
+      <div class="panel panel-danger">
       <div class="panel-heading">NEGATIVE REVIEWS</div>
       <div class="panel-body">{{name[3]}}</div>
     </div>
 
-    <div class="panel panel-warning">
-      <div class="panel-heading">NEUTAL REVIEWS</div>
+      <div class="panel panel-warning">
+      <div class="panel-heading">NEUTRAL REVIEWS</div>
       <div class="panel-body">{{name[1]}}</div>
     </div>
 
-    <div class="panel panel-success">
+      <div class="panel panel-success">
       <div class="panel-heading">POSITIVE REVIEWS</div>
       <div class="panel-body">{{name[2]}}</div>
     </div>
     
   </div>
 
-    	
+    </div>
+
+  </div>
+    <div class="row">
+        <canvas id="myChart" width="400" height="175">
+
+        </canvas>
+    </div>
+    <div class="row bg-primary">
+       <p class="text-center text-white"><a  style="color:white">GO BACK</a></p>
 
     </div>
-    
-    
-  </div>
 </div>
 
 </body>
-		
-	
+		<script>
+      console.log(" " + document.getElementById('myChart').getContext('2d'));
+      
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Positive', 'Negative', 'Neutral'],
+        datasets: [{
+            label: '# of Votes',
+            data: [{{name[2]}}, {{name[3]}}, {{name[1]}}],
+            backgroundColor: [
+                'rgba(0, 255, 0, 0.3)',
+                'rgba(255, 0, 0, 0.3)',
+                'rgba(255, 255, 126, 1)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+
 </html>

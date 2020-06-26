@@ -55,6 +55,9 @@ def run_script(text):
 
     vote_list = vote_list.split("\n")
 
+    price = '_1uv9Cb'
+    price_x = wait.until(EC.presence_of_element_located((By.CLASS_NAME, price)))
+
     def myfunc(a):
         return int(a)
 
@@ -71,6 +74,6 @@ def run_script(text):
     total_votes = 0
     for i in range(len(votes)):
         total_votes = votes[i] + total_votes
-    name = [total_votes, neutral_votes, positive_votes, negative_votes, rating, total_r, image_src]
+    name = [total_votes, neutral_votes, positive_votes, negative_votes, rating, total_r, image_src,price_x]
     driver.quit()
     return name
